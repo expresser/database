@@ -1,0 +1,26 @@
+{
+  "name": "expresser/database",
+  "support": {
+    "issues": "https://github.com/expresser/option/issues",
+    "source": "https://github.com/expresser/option"
+  },
+  "authors": [
+    {
+      "name": "Graham Blevins",
+      "email": "hgblevins@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "expresser/support": "dev-master",
+    "illuminate/database": "5.0.33"
+  },
+  "autoload": {
+    "psr-4": {
+      "Expresser\\Database\\": ""
+    },
+    "files": [
+			"drivers.php"
+		]
+  }
+}
