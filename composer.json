@@ -1,8 +1,8 @@
 {
   "name": "expresser/database",
   "support": {
-    "issues": "https://github.com/expresser/option/issues",
-    "source": "https://github.com/expresser/option"
+    "issues": "https://github.com/expresser/database/issues",
+    "source": "https://github.com/expresser/database"
   },
   "authors": [
     {
@@ -13,7 +13,7 @@
   "repositories":[
 		{
       "type": "vcs",
-      "url": "https://github.com/expresser/support.git"
+      "url": "https://github.com/expresser/support"
     }
 	],
   "require": {
@@ -28,5 +28,6 @@
     "files": [
 			"drivers.php"
 		]
-  }
+  },
+  "minimum-stability": "dev"
 }
