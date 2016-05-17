@@ -1,6 +1,6 @@
 <?php namespace Expresser\Database;
 
-class DatabaseIgniterService extends \Themosis\Core\IgniterService {
+class DatabaseServiceProvider extends \Themosis\Core\IgniterService {
 
   private static $connection;
 
