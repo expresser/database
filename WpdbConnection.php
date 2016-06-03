@@ -2,6 +2,8 @@
 
 class WpdbConnection extends \Illuminate\Database\MySqlConnection {
 
+  protected $fetchMode = ARRAY_A;
+
   protected $wpdb;
 
   public function __construct() {
@@ -20,7 +22,14 @@ class WpdbConnection extends \Illuminate\Database\MySqlConnection {
 
   public function select($query, $bindings = []) {
 
-    return $this->statement($query, $bindings);
+    if (count($bindings) > 0) {
+
+      $bindings = $this->prepareBindings($bindings);
+
+      $query = $this->wpdb->prepare($query, $bindings);
+    }
+
+    return $this->wpdb->get_results($query, $this->getFetchMode());
   }
 
   public function insert($query, $bindings = []) {
@@ -42,11 +51,16 @@ class WpdbConnection extends \Illuminate\Database\MySqlConnection {
 
     return $this->run($query, $bindings, function ($me, $query, $bindings) {
 
-      if (count($bindings) > 0) $query = $me->wpdb->prepare($query, $bindings);
+      if (count($bindings) > 0) {
 
-      $this->wpdb->query($query);
+        $bindings = $me->prepareBindings($bindings);
 
-      return $this->wpdb->last_result;
+        $query = $me->wpdb->prepare($query, $bindings);
+      }
+
+      $result = $me->wpdb->query($query);
+
+      return $result !== false ?: $result;
     });
   }
 
@@ -54,9 +68,14 @@ class WpdbConnection extends \Illuminate\Database\MySqlConnection {
 
     return $this->run($query, $bindings, function ($me, $query, $bindings) {
 
-      if (count($bindings) > 0) $query = $me->wpdb->prepare($query, $bindings);
+      if (count($bindings) > 0) {
 
-      return $this->wpdb->query($query);;
+        $bindings = $me->prepareBindings($bindings);
+
+        $query = $me->wpdb->prepare($query, $bindings);
+      }
+
+      return $me->wpdb->query($query);
     });
   }
 
