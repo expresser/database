@@ -2,7 +2,10 @@
 
 global $custom_drivers;
 
-if (!is_array($custom_drivers)) $custom_drivers = [];
+if (!is_array($custom_drivers)) {
+
+  $custom_drivers = [];
+}
 
 $driver_folder = dirname( __FILE__ ) . '/Drivers';
 

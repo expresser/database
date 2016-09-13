@@ -11,9 +11,14 @@ class WpdbGrammar extends \Illuminate\Database\Query\Grammars\MySqlGrammar {
 
     $placeholder = '%s';
 
-    if (is_int($value)) $placeholder = '%d';
+    if (is_int($value)) {
 
-    else if (is_float($value)) $placeholder = '%f';
+      $placeholder = '%d';
+    }
+    else if (is_float($value)) {
+
+      $placeholder = '%f';
+    }
 
     return $placeholder;
   }
