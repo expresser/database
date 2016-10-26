@@ -1,37 +1,39 @@
-<?php namespace Expresser\Database;
+<?php
+
+namespace Expresser\Database;
 
 use Expresser\Support\Facades\DB;
 
-abstract class Model extends \Expresser\Support\Model {
+abstract class Model extends \Expresser\Support\Model
+{
+    protected $primaryKey = 'id';
 
-  protected $primaryKey = 'id';
+    protected $table;
 
-  protected $table;
+    public function getKeyName()
+    {
+        return $this->primaryKey;
+    }
 
-  public function getKeyName() {
+    public function getQualifiedKeyName()
+    {
+        return $this->getTable().'.'.$this->getKeyName();
+    }
 
-    return $this->primaryKey;
-  }
+    public function getTable()
+    {
+        return $this->table;
+    }
 
-  public function getQualifiedKeyName() {
+    public function setTable()
+    {
+        $this->table = $table;
 
-    return $this->getTable() . '.' . $this->getKeyName();
-  }
+        return $this;
+    }
 
-  public function getTable() {
-
-    return $this->table;
-  }
-
-  public function setTable() {
-
-    $this->table = $table;
-
-    return $this;
-  }
-
-  public function newQuery() {
-
-    return (new Query(DB::table($this->getTable())))->setModel($this);
-  }
+    public function newQuery()
+    {
+        return (new Query(DB::table($this->getTable())))->setModel($this);
+    }
 }
