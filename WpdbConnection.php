@@ -5,7 +5,7 @@ namespace Expresser\Database;
 use Expresser\Database\Query\Grammars\WpdbGrammar;
 use Illuminate\Database\MySqlConnection;
 
-class WpdbConnection extends MySqlConnection;
+class WpdbConnection extends MySqlConnection
 {
     protected $fetchMode = ARRAY_A;
 
