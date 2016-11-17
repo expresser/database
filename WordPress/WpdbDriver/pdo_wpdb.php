@@ -358,13 +358,13 @@ class wpdb_driver_pdo_wpdb extends wpdb_driver
         return $version;
     }
 
-  /**
-   * Return dbh pdo.
-   */
-  public function get_pdo()
-  {
-      return $this->dbh;
-  }
+    /**
+     * Return dbh pdo.
+     */
+    public function get_pdo()
+    {
+        return $this->dbh;
+    }
 
     /**
      * Don't save any state.  The db wrapper should call connect() again.

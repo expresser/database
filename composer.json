@@ -20,7 +20,7 @@
       "Expresser\\Database\\": ""
     },
     "files": [
-			"drivers.php"
+			"./WordPress/WpdbDriver/drivers.php"
 		]
   },
   "minimum-stability": "dev"

@@ -1,8 +1,10 @@
 <?php
 
-namespace Expresser\Database;
+namespace Expresser\Database\Query\Grammars;
 
-class WpdbGrammar extends \Illuminate\Database\Query\Grammars\MySqlGrammar
+use Illuminate\Database\Query\Grammars\MySqlGrammar;
+
+class WpdbGrammar extends MySqlGrammar
 {
     public function parameter($value)
     {
