@@ -5,13 +5,13 @@ namespace Expresser\Database\Themosis;
 use Expresser\Database\Eloquent\Model;
 use Expresser\Database\WpdbConnection;
 use Illuminate\Database\ConnectionResolver;
-use Themosis\Core\IgniterService;
+use Themosis\Foundation\ServiceProvider;
 
-class DatabaseServiceProvider extends IgniterService
+class DatabaseServiceProvider extends ServiceProvider
 {
-    public function ignite()
+    public function register()
     {
-        $this->app->bindShared('db.connections', function ($app) {
+        $this->app->singleton('db.connections', function ($app) {
             $resolver = new ConnectionResolver([
                 'wpdb' => new WpdbConnection,
             ]);
